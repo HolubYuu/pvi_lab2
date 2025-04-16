@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS</title>
+    <link rel="stylesheet" href="lab2.css">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+<!--Header-->
+
+<div class="nav-container">
+    <nav class="navbar">
+        <h1 id="navbar-logo">CMS</h1>
+        <div class="menu-toggle" id="small-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-menu">
+            <li>
+                <a href="#" class="nav-links">
+                    <label for="notification-checkbox" class="notification-container">
+                        <input type="checkbox" checked="checked" id="notification-checkbox">
+                        <img src="images/notification-bell.png" alt="Notifications" class="notification-icon">
+                    </label>
+                </a>
+                
+            </li>
+            <li>
+                <a href="#" class="nav-links">
+                    <img src="images/user.png" alt="Account"> Yulia
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Account Popup -->
+    <div class="popup account-popup" id="account-popup">
+        <div class="popup-content">
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Notifications Popup -->
+    <div class="popup notifications-popup" id="notifications-popup">
+        <div class="popup-content">
+            <div class="notification">
+                <img src="images/user.png" alt="User">
+                <span>AAAAAAAAA</span>
+            </div>
+            <div class="notification">
+                <img src="images/user.png" alt="User">
+                <span>Ow</span>
+            </div>
+            <div class="notification">
+                <img src="images/user.png" alt="User">
+                <span>That`s nice</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="menu-toggle" id="sidebar-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul>
+            <li><a href="#" class="page-link" data-page="dashboard">Dashboard</a></li>
+            <li><a href="#" class="page-link" data-page="students">Students</a></li>
+            <li><a href="#" class="page-link" data-page="tasks">Tasks</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="page" id="dashboard">
+            <h2>Dashboard</h2>
+        </div>
+        <div class="page" id="students">
+            <h2>Students</h2>
+            <img src="images/add.png" class="add-icon" alt="Add">
+            <img src="images/trash-bin_cute.png" class="bulk-delete-icon" style="display:none;" alt="Trash">
+            <div class="students-table-container">
+            <table class="students-table">
+                <thead>
+                    <tr>
+                        <th aria-label="select check"></th> 
+                        <th>Group</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Birthday</th>
+                        <th>Status</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" aria-label="select check"></td>
+                        <td>PZ</td>
+                        <td>Some Guy</td>
+                        <td>Male</td>
+                        <td>2006-01-01</td>
+                        <td><span class="status-circle green"></span></td>
+                        <td>
+                            <div class="edit-icon"><img src="images/pencil.png" alt="Edit"></div>
+                            <div class="delete-icon"><img src="images/trash-bin_cute.png" alt="Trash"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" aria-label="select check"></td>
+                        <td>PZ</td>
+                        <td>Some Guy</td>
+                        <td>Male</td>
+                        <td>2006-01-01</td>
+                        <td><div class="status-circle green"></div></td>
+                        <td>
+                            <div class="edit-icon"><img src="images/pencil.png" alt="Edit"></div>
+                            <div class="delete-icon"><img src="images/trash-bin_cute.png" alt="Trash"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" aria-label="select check"></td>
+                        <td>PZ</td>
+                        <td>Some Guy</td>
+                        <td>Male</td>
+                        <td>2006-01-01</td>
+                        <td><div class="status-circle green"></div></td>
+                        <td>
+                            <div class="edit-icon"><img src="images/pencil.png" alt="Edit"></div>
+                            <div class="delete-icon"><img src="images/trash-bin_cute.png" alt="Trash"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" aria-label="select check"></td>
+                        <td>PZ</td>
+                        <td>Some Guy</td>
+                        <td>Male</td>
+                        <td>2006-01-01</td>
+                        <td><div class="status-circle green"></div></td>
+                        <td>
+                            <div class="edit-icon"><img src="images/pencil.png" alt="Edit"></div>
+                            <div class="delete-icon"><img src="images/trash-bin_cute.png" alt="Trash"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination" id="pagination"></div>
+        </div>
+        
+        <div class="overlay" id="overlay"></div>
+        <div class="modal">
+            <form class="modal-content">
+                <span class="close add-close">&times;</span>
+                <h2 id="modal-name">Add Student</h2>
+                <input type="hidden" id="student-id">
+                <label>Group: 
+                    <input type="text" id="group" required> 
+                           <!-- pattern="^[А-Яа-яA-Za-z0-9\-\s]{4,10}$" --> 
+                           <!--title="Enter group name, 4-10 symbols">-->
+                  </label><br>
+                  
+                  <label>Name: 
+                    <input type="text" id="name" required>
+                           <!-- pattern="^[А-Яа-яA-Za-z'’\s\-]{4,30}$" --> 
+                           <!--title="Enter name, 4-30 symbols">-->
+                  </label><br>
+                    <label>Gender:
+                        <select id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </label><br>
+                    <label>Birthday: <input type="date" id="birthday" required></label><br>
+                    <button type="submit" id="modal-submit-btn">Add</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <h6 id="validation-text">Please fill all fields correctly</h6><br>
+                </form>
+            </div>
+        
+        <div class="delete-student-modal">
+                <span class="close edit-close">&times;</span>
+                <p id="delete-text">Are you sure you want to delete students?</p><br>
+                <button type="submit">Delete</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+
+        <div class="page" id="tasks">
+        <h2>Tasks</h2>
+        </div>
+            
+
+        <div class="page" id="message">
+        <h2>Messages</h2>
+        </div>
+    </div> 
+    </div>
+
+    <script src="lab2.js"></script>
+</body>
+</html>

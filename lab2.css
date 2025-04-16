@@ -1,0 +1,706 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+}
+
+body, html {
+    overflow-x: hidden; 
+}
+
+
+.nav-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; 
+}
+
+.navbar {
+    background-color: rgb(255, 228, 233); 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 998; 
+    height: 60px; 
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+
+
+#navbar-logo {
+    color: rgb(169, 43, 70);
+    margin-left: 15px;
+}
+
+#navbar-logo:hover{
+cursor: pointer;
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    list-style: none;
+    text-align: right;
+    width: 15%;
+    justify-self: end;
+}
+
+
+.nav-links {
+    color: rgb(169, 43, 70);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:15px;
+    text-decoration: none;
+}
+
+.nav-links:hover {
+    filter: brightness(0.9);
+}
+
+.nav-links:hover img {
+    filter: brightness(0.9);
+}
+
+.nav-links img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+
+.menu-toggle {
+    position: relative; 
+    top: auto;
+    right: auto;
+    margin-left: auto; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 4px;
+    margin: 2px auto;
+    display: none;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(192, 41, 73);
+}
+
+
+
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: rgb(255, 187, 202);
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.sidebar ul li {
+    margin: 35px 0;
+    font-family: Georgia, serif;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: rgb(130, 32, 53);
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.sidebar ul li a:hover {
+    filter: brightness(0.9);
+}
+
+.sidebar ul li a.active {
+    color: rgb(169, 43, 70); 
+    font-weight: bold;
+}
+
+
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    margin-top: 70px; 
+    font-size: 13px;
+    text-align: left;
+    color:rgb(169, 43, 70);
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+
+
+
+.notification img{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.notification-container {
+    position: relative; 
+    display: inline-block; 
+}
+
+.notification-container input {
+    display: none;
+}
+
+.notification-container .notification-icon {
+    position: relative; 
+    cursor: pointer;
+}
+
+.notification-container::after {
+    content: "";
+    position: absolute;
+    top: 2px;  
+    right: 5px; 
+    width: 10px;
+    height: 10px;
+    background-color: rgb(169, 43, 70);
+    border-radius: 50%;
+    border: 1px solid white;
+    display: block; 
+}
+
+.notification-container.no-notification::after {
+    display: none; 
+}
+
+
+.popup {
+    display: none;
+    position: absolute;
+    background: rgb(249, 187, 201);
+    border: 1px solid rgb(169, 43, 70);
+    color:rgb(169, 43, 70);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1001;
+    width: 200px;
+}
+
+.notifications-popup {
+    top: 50px;
+    right: 50px;
+}
+
+.account-popup {
+    top: 50px;
+    right: 20px;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+@keyframes bell-animation {
+    0% { 
+        transform: rotate(0deg); opacity: 1; 
+    }
+
+    25% { 
+        transform: rotate(30deg); 
+    }
+
+    50% { 
+        transform: rotate(-25deg) scale(1.2); 
+    }
+
+    75% { 
+        transform: rotate(20deg); 
+    }
+    
+    100% { 
+        transform: rotate(-15deg) scale(1); 
+    }
+}
+
+
+
+
+.account-popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.account-popup li {
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.account-popup li:hover {
+    background: rgb(250, 167, 185);
+}
+
+.account-popup li a {
+    text-decoration: none; 
+    color: rgb(169, 43, 70);
+    padding: 8px; 
+}
+
+
+
+
+.students-table-container {
+    overflow-x: auto; 
+    width: 100%;
+}
+
+.students-table {
+    min-width: 600px; 
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 90px;
+}
+
+.students-table th,
+.students-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid rgb(169, 43, 70);
+}
+
+.students-table th {
+    background-color: rgb(252, 211, 220);
+}
+
+.students-table td {
+    background-color: rgb(255, 243, 248);
+}
+
+.students-table td img{
+    width: 20px;
+    height:20px;
+}
+
+.students-table td img:hover{
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(254, 100, 134);
+    background-color: white;
+    appearance: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox:checked {
+    background-color: rgb(255, 89, 125);
+    border-color: rgb(253, 87, 123);
+}
+
+.checkbox:checked::after {
+    content: '✔';
+    position: absolute;
+    top: -3px ;
+    left: 3px;
+    font-size: 16px;
+    color: white;
+}
+
+
+
+.status-circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.status-circle.green {
+    background-color: rgb(182, 249, 182);
+}
+
+.status-circle.red {
+    background-color: rgb(250, 137, 137);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    background-color:rgb(255, 243, 248) ;
+    border-color: rgb(169, 43, 70);
+    color:rgb(169, 43, 70);
+}
+
+.pagination button:hover{
+    opacity: 0.9;
+}
+
+.pagination button.active {
+    font-weight: bold;
+    background-color: rgb(255, 243, 248);
+    color:rgb(169, 43, 70);
+}
+
+
+.icon {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+
+
+.add-icon{
+    position: absolute;
+    top: 110px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    opacity:0.7;
+    cursor: pointer;
+    z-index: 900;
+}
+
+
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content{
+    background-color: rgb(255, 228, 233);
+    padding: 15px;
+    width: 300px;
+    height:440px;
+    margin:auto;
+    border:1px solid rgb(169, 43, 70);
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h2{
+    text-align: center;
+}
+
+.modal-content label {
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px;
+    border-color: rgb(252, 48, 92);
+    color: rgb(169, 43, 70);
+    border-radius: 5px;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+    outline-color: rgb(252, 48, 92);
+}
+
+h6{
+    color: rgb(169, 43, 70);
+    font-size: 10px;
+    margin:-20%;
+    display:none;
+}
+
+.modal-content button{
+    margin: 10px 5px;
+    padding: 8px 12px;
+    background-color: rgb(252, 48, 92);
+    color: rgb(254, 242, 242);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: absolute;
+    justify-content: center;
+    width:45%;
+}
+
+.modal-content button:hover {
+    background-color: rgb(251, 157, 177); 
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.bulk-delete-icon {
+    position: absolute;
+    top: 110px;
+    right: 90px; 
+    width: 50px;
+    height: 50px;
+    opacity: 0.7;
+    cursor: pointer;
+    z-index: 999;
+    display: none;
+}
+
+.delete-student-modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 300px;
+    height: auto;
+    padding: 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: rgb(255, 228, 233);
+    border: 1px solid rgb(169, 43, 70);
+    color: rgb(169, 43, 70);
+    text-align: center;
+}
+
+.delete-student-modal button{
+    margin: 0px 5px;
+    padding: 8px 12px;
+    background-color: rgb(252, 48, 92);
+    color: rgb(254, 242, 242);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: absolute;
+    justify-content: center;
+    width:45%;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 999; 
+    display: none; 
+}
+
+@media screen and (max-width: 700px) {
+    .nav-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .nav-menu {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        opacity: 0;
+        transition: all 0.5s ease;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .nav-menu li:first-child {
+        margin-right: 0; 
+    }
+
+    #navbar-logo {
+        margin-left: 15px;
+    }
+
+    .nav-menu.active {
+        background: rgb(253, 197, 210);
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1001;
+    }
+
+    .nav-links {
+        text-align: center;
+        line-height: 60px;
+        width: 100%;
+        display: table;
+    }
+
+    .navbar {
+        width: 100%;
+        height: 60px;
+    }
+
+    #small-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: relative; 
+        margin-left: auto;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        cursor: pointer;
+        color: rgb(167, 32, 61);
+    }
+
+    .menu-toggle:hover {
+        cursor: pointer;
+    }
+
+    #small-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #small-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #small-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .notification-container::after {
+        top: 18px; 
+        right: 6px;
+        width: 10px;
+        height: 10px;
+    }
+
+
+    .sidebar {
+        width: 50px;
+        top: 60px;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+    }
+
+    .sidebar ul li a {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .sidebar.active {
+        width: 100%;
+        height: calc(100vh - 60px);
+        position: fixed;
+        top: 60px;
+        left: 0;
+        z-index: 0;
+        text-align: center;
+        background-color: rgb(255, 187, 202);
+        z-index: 1001;
+    }
+
+    .sidebar ul {
+        display: none;
+    }
+
+    .sidebar.active ul {
+        display: block;
+    }
+
+    .sidebar.active ul li {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    #sidebar-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        width: 100%;
+    }
+
+    #sidebar-menu .bar {
+        width: 30px;
+        height: 4px;
+        margin: 5px 0;
+        color: rgb(167, 32, 61);
+        transition: all 0.3s ease-in-out;
+    }
+
+    #sidebar-menu.is-active .bar:nth-child(1) {
+        transform: translateY(14px) rotate(45deg);
+    }
+
+    #sidebar-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #sidebar-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-14px) rotate(-45deg);
+    }
+
+    .content{
+        margin-left: 40px;
+        padding: 20px;
+        text-align: left;
+        margin-top: 47px;
+    }
+
+}
